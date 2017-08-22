@@ -1,0 +1,25 @@
+{% extends 'base.html.twig' %}
+
+
+{% block header %}<h1>Welcome to Estiam Blog{% if app.user %}, <b>{{ app.user.fullname }}</b> {% endif %}</h1>{% endblock %}
+
+{% block body %}
+{% if app.user %}
+{% if is_granted('ROLE_ADMIN') %}
+<p>You are logged in</p>
+{% else %}
+	{% for post in posts %}
+        <li><strong><a href="post/{{ post.id }}">{{ post.title }}</a></strong> {% if post.published_at %} (Published at {{ post.published_at|date('F jS \\a\\t g:ia') }}){% endif %}</li>
+        {{ post.content }}<br/><br/>
+    {% else %}
+        <li>No posts.</li>
+    {% endfor %}
+{% endif %}
+{% else %}
+<p>login here</p>
+    <div>
+        {{ include('/user/_login.html.twig') }}
+    </div>
+{% endif %}
+{% endblock %}
+

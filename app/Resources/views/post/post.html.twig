@@ -1,0 +1,9 @@
+{% extends 'base.html.twig' %}
+
+{% block header %}<h1>{{post.title}}</h1><h4>Published at : {{post.published_at|date('F jS \\a\\t g:ia')}}</h4>{% endblock %}
+
+{% block body %}
+<ul>
+    <li><strong>{{ post.content }}</strong>
+</ul>
+{% endblock %}

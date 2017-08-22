@@ -1,0 +1,7 @@
+contact.fullname: Nom
+contact.email: Email
+contact.subject: Sujet
+contact.contacted_at: Contacté le
+contact.processed: Traité
+hello: Bonjour %name% !
+contact.count: "%count% contact|%count% contacts"

@@ -1,0 +1,15 @@
+{% extends 'base.html.twig' %}
+
+{% block header %}<h1>Posts</h1>{% endblock %}
+
+{% block body %}
+<ul>
+    {% for post in posts %}
+        <li><strong>{{ post.title }}</strong> {% if post.published_at %} (Published at {{ post.published_at|date('F jS \\a\\t g:ia') }})
+        {% else %} <a href="publish/{{post.id}}"> Publish </a> {% endif %}</li>
+        {{ post.content }}<br/><br/>
+    {% else %}
+        <li>No posts.</li>
+    {% endfor %}
+</ul>
+{% endblock %}

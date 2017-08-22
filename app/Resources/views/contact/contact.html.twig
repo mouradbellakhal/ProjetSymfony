@@ -1,0 +1,9 @@
+{% extends 'base.html.twig' %}
+
+{% block header %}<h1>Contact us!</h1>{% endblock %}
+
+{% block body %}
+<div>
+    {{ form(form, {'attr': {'novalidate': 'novalidate'}}) }}
+</div>
+{% endblock %}

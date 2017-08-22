@@ -1,0 +1,35 @@
+redirect_to_default_locale:
+    path: ""
+    defaults:
+        _controller: FrameworkBundle:Redirect:UrlRedirect
+        path: /%locale%
+
+logout:
+    path: "/logout"
+    
+adminregister:
+    path: /%locale%/adminregister
+    defaults: { _controller: AppBundle\Controller\UserController:adminRegisterAction }
+userregister:
+    path: /%locale%/userregister
+    defaults: { _controller: AppBundle\Controller\UserController:userRegisterAction }
+posts:
+    path: /%locale%/admin/posts
+    defaults: { _controller: AppBundle\Controller\PostController:postsAction }
+create_post:
+    path: /%locale%/admin/posts/new
+    defaults: { _controller: AppBundle\Controller\PostController:createPostAction }
+publish_post:
+    path: /%locale%/admin/publish/{id}
+    defaults: { _controller: AppBundle\Controller\PostController:publishAction }
+post:
+    path: /%locale%/post/{id}
+    defaults: { _controller: AppBundle\Controller\PostController:postAction }
+app:
+    resource: '@AppBundle/Controller/'
+    type: annotation
+    prefix: "{_locale}"
+    requirements:
+        _locale: "|en|fr"
+    defaults:
+        _locale: en

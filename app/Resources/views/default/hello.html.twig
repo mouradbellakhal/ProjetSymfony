@@ -1,0 +1,12 @@
+{% extends 'base.html.twig' %}
+
+{% block header %}
+    <h1>Hello</h1>
+    <a href="{{ path('hello', {'name': 'estiam'}) }}">Hello estiam</a>
+    -
+    <a href="{{ path('hello', {'name': 'paris'}) }}">Hello Paris</a>
+{% endblock %}
+
+{% block body %}
+<h1>{{ 'hello'|trans({'%name%': name})}}</h1>
+{% endblock %}

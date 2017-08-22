@@ -1,0 +1,19 @@
+<nav class="navbar navbar-default">
+    <div class="container-fluid">
+        <ul class="nav navbar-nav">
+            <li{{ app.request.get('_route') == 'homepage' ? ' class="active"'}}><a href="{{ path('homepage') }}">Homepage</a></li>
+            {% if is_granted('ROLE_ADMIN') %}
+                <li{{ app.request.get('_route') == 'create_post' ? ' class="active"'}}><a href="{{ path('create_post') }}">Create a new post</a></li>
+                <li{{ app.request.get('_route') == 'posts' ? ' class="active"'}}><a href="{{ path('posts') }}">Posts</a></li>
+            {% endif %}
+            {% if app.user %}
+                <li{{ app.request.get('_route') == 'update_password' ? ' class="active"'}}><a href="{{ path('update_password') }}">Update password</a></li>
+                <li><a href="{{ path('logout') }}">Logout ({{ app.user.fullname }})</a></li>
+            {% else %}
+                <li{{ app.request.get('_route') == 'userregister' ? ' class="active"'}}><a href="{{ path('userregister') }}">User Register</a></li>
+                <li{{ app.request.get('_route') == 'adminregister' ? ' class="active"'}}><a href="{{ path('adminregister') }}">Admin Register</a></li>
+                <li{{ app.request.get('_route') == 'login' ? ' class="active"'}}><a href="{{ path('login') }}">Login</a></li>
+            {% endif %}
+        </ul>
+    </div>
+</nav>
